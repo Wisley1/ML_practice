@@ -22,7 +22,7 @@
 
 \*Для типов `embeddings_sklearn` и `peft_lora` в `app/ml/dispatch.py` сейчас используется один и тот же HF‑бэкенд (`predict_peft_lora`): это **полные веса** с карточки модели, не отдельный PEFT‑адаптер.
 
-Если у записи **пустой** `storage_path`, для `sklearn_tfidf` используется **заглушка** (`predict_stub`) — удобно для тестов.
+Если у записи **пустой** `storage_path`, для `sklearn_tfidf` используется **заглушка** (`predict_stub`).
 
 Локальный sklearn‑пайплайн (один файл `joblib`) задаётся абсолютным путём в `storage_path`, например под `/data/models/...` в Docker — см. `app/ml/backend_sklearn.py`.
 
