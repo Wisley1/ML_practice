@@ -18,6 +18,8 @@
 | `rubert_tiny2_ru_financial_sentiment` | `embeddings_sklearn`* | **Русский**, домен **финансов**: RuBERT‑tiny2, классы *neutral / positive / negative* ([mxlcw/rubert-tiny2-russian-financial-sentiment](https://huggingface.co/mxlcw/rubert-tiny2-russian-financial-sentiment)). Инференс через Transformers (~29M параметров). | **2** |
 | `rubert_tiny2_ru_sentiment` | `peft_lora`* | **Русский** **общий** сентимент (те же три класса; [seara/rubert-tiny2-russian-sentiment](https://huggingface.co/seara/rubert-tiny2-russian-sentiment)). Тип в БД `peft_lora`, на практике грузится как полная `AutoModelForSequenceClassification` с Hub. | **5** |
 
+И здесь сначала вместо второй модели планировалось по логике брать бустинг, обученный на эмбеддингах, но оказывается на ХФ такого материала нет. 
+
 \*Для типов `embeddings_sklearn` и `peft_lora` в `app/ml/dispatch.py` сейчас используется один и тот же HF‑бэкенд (`predict_peft_lora`): это **полные веса** с карточки модели, не отдельный PEFT‑адаптер.
 
 Если у записи **пустой** `storage_path`, для `sklearn_tfidf` используется **заглушка** (`predict_stub`) — удобно для тестов.
