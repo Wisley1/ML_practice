@@ -1,4 +1,3 @@
-# Один образ на api + workers + beat (иначе compose трижды гоняет pip install).
 x-app-image: &app_image ml_practice-app:latest
 
 services:

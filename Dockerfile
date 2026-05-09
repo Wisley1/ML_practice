@@ -3,12 +3,10 @@ FROM python:3.12-slim
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1
-# Чтобы pip не молчал минутами в логе сборки (нужен pip ≥22)
 ENV PIP_PROGRESS_BAR=on
 ENV PIP_DEFAULT_TIMEOUT=120
 ENV TOKENIZERS_PARALLELISM=false
 
-# CPU-only torch — отдельным слоем: в логе видно, на каком этапе сборка
 COPY requirements.txt /tmp/requirements.txt
 RUN echo "=== [1/2] PyTorch (CPU wheel, ~100–200 MB download) ===" \
     && pip install --no-cache-dir "torch>=2.1.0" \
