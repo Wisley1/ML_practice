@@ -124,6 +124,7 @@ docker compose exec api python -m scripts.seed_loyalty
 export ML_API_BASE=http://localhost:8000
 streamlit run streamlit/app.py
 ```
+С правами админа создана учетка на почту email1@x.com с паролем password.
 
 Опционально задайте `API_BASE` в `.streamlit/secrets.toml`.
 
